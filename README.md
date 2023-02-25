@@ -1,6 +1,7 @@
 # InterviewFrontendJS
 
-Общие вопросы по JavaScript, TypeScript, Фронтенду и Бэкенду<br/>
+## Общие вопросы по JavaScript, TypeScript, Angular, Frontend'у и Backend'у <br/>
+
 ## Сервер: status code браузера<br/>
 Ниже представлен обзорный список всех описанных в данной статье кодов ответа:</br>
 
