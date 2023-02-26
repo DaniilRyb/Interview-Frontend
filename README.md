@@ -1,6 +1,6 @@
-# InterviewFrontendJS
+# Вопросы на интервью Frontend-разработчика
 
-## Общие вопросы по JavaScript, TypeScript, Angular, Frontend'у и Backend'у <br/>
+## Вопросы по JavaScript, TypeScript, Angular, Frontend'у и Backend'у <br/>
 
 ## Сервер: status code браузера<br/>
 Ниже представлен обзорный список всех описанных в данной статье кодов ответа:</br>
@@ -89,8 +89,84 @@
 526 Invalid SSL Certificate («недействительный сертификат SSL»)</br>
 
 
-# RxJS: Observable, BehaviorSubject, subscribe, unsubscribe
-# Микрофронтенд</br>
-# Асинхронный JavaScript: Promise, Promise.all, Promise.race, Promise.any</br>
-# Основы Angular: жизненный дикл компонентов, директивы, пайпы, сервисы, модули
+## RxJS: Observable, BehaviorSubject, subscribe, unsubscribe
+## Микрофронтенд</br>
+## Асинхронный JavaScript: Promise, Promise.all, Promise.race, Promise.any</br>
+
+Пример использования Promise
+```js
+const promise1 = new Promise((resolve, reject) => {
+    fetch('https://jsonplaceholder.typicode.com/todos/1') # обрщение к серверу
+        .then(response => response.json()) №
+        .then(json => resolve(json))
+        .catch((err) => reject(err))
+})
+
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Promise2 status is OK!!!")
+    }, 200)
+})
+
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("Promise3 status is OK!!!"), 1000)
+})
+```
+
+Возвращает успешный (resolve) промис, если все промисы выполнились успешно, иначае возращается неуспешный промис (reject)
+```js
+Promise.all([promise1, promise2, promise3])
+    .then(() => console.log("ok!!!!"))
+    .catch((err) => console.log(err))
+```
+
+Функция race([...arrayPromises]) возвращаеся промис, который выполнился быстрее всех из переданных в массив
+
+```js
+Promise.race([promise1, promise2, promise3])
+    .then(r => console.log(r))
+    .catch((err) => console.log(err))
+
+```
+
+Функция any([...arrayPromises]) возвращает промис, который выполнился быстрее всех и одновременно является успешным
+```js
+const slow = new Promise(resolve => setTimeout(() => resolve(1), 6000))
+const fast = new Promise(resolve => setTimeout(() => resolve(2), 3000))
+const theFastest = new Promise((resolve, reject) =>
+    setTimeout(() => reject('Some error'), 1000))
+
+Promise.any([slow, fast, theFastest])
+    .then(() => console.log("OK"))
+    .catch(() => console.log("Some error"))
+```
+## Основы Angular: компоненты (жизненный цикл), директивы, пайпы, сервисы, модули 
+
+## Принципы SOLID, KISS, DRY
+### SOLID - это принципы разработки программного обеспечения, следуя которым Вы получите хороший код, который в дальнейшем будет хорошо масштабироваться и поддерживаться в рабочем состоянии.
+
+S - Single Responsibility Principle - принцип единственной ответственности. Каждый класс должен иметь только одну зону ответственности.
+
+O - Open closed Principle - принцип открытости-закрытости. Классы должны быть открыты для расширения, но закрыты для изменения.
+
+L - Liskov substitution Principle - принцип подстановки Барбары Лисков. Должна быть возможность вместо базового (родительского) типа (класса) подставить любой его подтип (класс-наследник), при этом работа программы не должна измениться.
+
+I -  Interface Segregation Principle - принцип разделения интерфейсов. Данный принцип обозначает, что не нужно заставлять клиента (класс) реализовывать интерфейс, который не имеет к нему отношения.
+
+D - Dependency Inversion Principle - принцип инверсии зависимостей. Модули верхнего уровня не должны зависеть от модулей нижнего уровня. И те, и другие должны зависеть от абстракции. Абстракции не должны зависеть от деталей. Детали должны зависеть от абстракций.
+
+### Keep It Simple, Stupid / Будь проще
+
+Принцип KISS утверждает, что большинство систем работают лучше всего, если они остаются простыми, а не усложняются. Поэтому в области проектирования простота должна быть одной из ключевых целей, и следует избегать ненужной сложности в вашем коде
+
+
+
+## Event Loop, async/await JavaScript ES7 (ES2016)
+## Что нового в JavaScipt ES8 (ES2017)
+## Что нового в JavaScript ES9 (ES2018)
+## Что нового в JavaScript ES10 (ES2019)
+## Что нового в JavaScript ES11 (ES2020)
+## Что нового в JavaScript ES12 (ES2021)
+## Что нового в JavaScript ES13 (ES2022)
+Подробнее об ECMAScript 2022 (ES13): https://javascript.plainenglish.io/latest-es13-javascript-features-24cba45c93f7
 
